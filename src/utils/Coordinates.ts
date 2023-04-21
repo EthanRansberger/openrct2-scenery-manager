@@ -70,13 +70,19 @@ export function rotate(coords: CoordsXY, rotation: number) {
     };
 }
 
-export function mirror(coords: CoordsXY, mirrored: boolean = true) {
+export function mirror(coords: CoordsXY, mirrored: boolean = true, xaxis: boolean = true) {
     if (!mirrored)
         return coords;
+	if (!xaxis)
     return {
         x: coords.x,
         y: -coords.y,
     };
+	if(xaxis)
+	{
+		x: -coords.x,
+		y: coords.y,
+	};
 }
 
 export function equals(u?: CoordsXY, v?: CoordsXY): boolean {
