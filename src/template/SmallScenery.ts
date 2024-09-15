@@ -3,6 +3,8 @@
  *
  * The OpenRCT2 plugin "Scenery Manager" is licensed
  * under the GNU General Public License version 3.
+ * 
+ * mod by ethan
  *****************************************************************************/
 
 import * as Directions from "../utils/Directions";
@@ -22,7 +24,8 @@ export function rotate(element: SmallSceneryData, rotation: number): SmallScener
 }
 
 export function mirror(element: SmallSceneryData): SmallSceneryData {
-    let direction = element.direction;
+    //let direction = element.direction;
+    let direction = Directions.rotate(element.direction, 0x2);
     let quadrant = element.quadrant;
 
     if (!isFullTile(element))
@@ -34,7 +37,8 @@ export function mirror(element: SmallSceneryData): SmallSceneryData {
 
     return {
         ...element,
-        direction: direction as Direction,
+       // direction: direction as Direction,
+      //  direction: Directions.rotate(direction, )
         quadrant: quadrant,
     };
 }

@@ -20,11 +20,11 @@ export function rotate(direction: number | null, rotation: number): Direction | 
 
 
 
-export function mirror(direction: number, mirrored?: boolean): Direction;
-export function mirror(direction: number | null,mirrored?: boolean): Direction | null;
-export function mirror(direction: number | null, mirrored: boolean = true): Direction | null {
+export function mirror(direction: number, rotation: number, mirrored?: boolean): Direction;
+export function mirror(direction: number | null, rotation: number, mirrored?: boolean): Direction | null;
+export function mirror(direction: number | null, rotation: number,  mirrored: boolean = true): Direction | null {
     if (direction && mirrored && direction & 0x1)
-        return (((direction) ^ 0x2) & 0x3) as Direction;
+        return (((direction+rotation) ^ 0x2) & 0x3) as Direction;
     return direction && (direction & 0x3) as Direction;
 }
     
